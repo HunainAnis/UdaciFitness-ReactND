@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import AddEntry from './components/AddEntry';
-import { getMetricMetaInfo } from './utils/helpers';
-import { TouchableNativeFeedback } from 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './reducers'
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
@@ -12,9 +13,11 @@ const instructions = Platform.select({
 export default class App extends React.Component {
   render() {
   return (
-    <View style={styles.container}>
-        <AddEntry />
-    </View>
+    <Provider store={createStore(reducer)}>
+      <View style={styles.container}>
+          <AddEntry />
+      </View>
+    </Provider>
   );
 }
 }
