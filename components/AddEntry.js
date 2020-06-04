@@ -80,7 +80,6 @@ export default class AddEntry extends React.Component {
         const metaInfo = getMetricMetaInfo()
         return(
             <View>
-                <Text>{JSON.stringify(this.state)}</Text>
                 <DateHeader date={new Date().toLocaleDateString()} />
                 {Object.keys(metaInfo).map((key)=>{
                     const { getIcon, type, ...rest } = metaInfo[key]
