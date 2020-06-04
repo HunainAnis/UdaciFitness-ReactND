@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'
 import AddEntry from './components/AddEntry';
 import { getMetricMetaInfo } from './utils/helpers';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
