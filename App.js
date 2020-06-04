@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import AddEntry from './components/AddEntry';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './reducers'
+// import { YellowBox } from 'react-native';
+// YellowBox.ignoreWarnings(['Remote debugger']);
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,

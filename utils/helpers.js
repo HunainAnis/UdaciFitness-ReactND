@@ -141,3 +141,9 @@ export function isBetween (num, x, y) {
     ? info
     : info[metric]
   }
+
+export function getDailyReminderValue() {
+    return {
+      today:"👋 Don't forget to log your today!"
+    }
+  }

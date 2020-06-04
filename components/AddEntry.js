@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { getMetricMetaInfo, timeToString } from '../utils/helpers'
+import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helpers'
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciStepper'
 import DateHeader from './DateHeader'
@@ -83,14 +83,18 @@ class AddEntry extends React.Component {
         })
     }
 
-    reset() {
+    reset = () => {
         const key= timeToString()
-        // update Redux
+        this.props.dispatch(addEntry({
+            [key]: getDailyReminderValue()
+          }))
         // Route to Home
+        console.log('reset worked')
         removeEntry(key)
     }
 
     render() {
+        // console.log(this.props)
         const metaInfo = getMetricMetaInfo()
         if(this.props.alreadyLogged) {
             return(
@@ -134,4 +138,11 @@ class AddEntry extends React.Component {
     }
 }
 
-export default connect()(AddEntry)
+function mapStateToProps(state) {
+    const key = timeToString()
+    return{
+        alreadyLogged:state[key] && typeof state[key === 'undefined']
+    }
+}
+
+export default connect(mapStateToProps)(AddEntry)
