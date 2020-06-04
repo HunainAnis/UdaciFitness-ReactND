@@ -1,12 +1,10 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-export default class UdaciSlider extends React.Component {
-    render() {
+export default function DateHeader ({ date }) {
         return(
             <View>
-                <Text>UdaciSlider</Text>
+                <Text>{date}</Text>
             </View>
         )
     }
-}

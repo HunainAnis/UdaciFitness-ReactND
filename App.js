@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
 import AddEntry from './components/AddEntry';
 import { getMetricMetaInfo } from './utils/helpers';
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
@@ -10,22 +11,10 @@ const instructions = Platform.select({
 });
 
 export default class App extends React.Component {
-  // componentDidMount() {
-  //   console.log('Before')
-  //    debugger
-  //   console.log('After')
-  // }
   render() {
   return (
     <View style={styles.container}>
-      {/* <Ionicons name='ios-book' size={100} color='green' />
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>To get started, edit App.js</Text>
-      <Text style={styles.instructions}>{instructions}</Text> */}
-      {getMetricMetaInfo('bike').getIcon()}
-      {getMetricMetaInfo('sleep').getIcon()}
-      {getMetricMetaInfo('swim').getIcon()}
-      {getMetricMetaInfo('run').getIcon()}
+        <AddEntry />
     </View>
   );
 }
