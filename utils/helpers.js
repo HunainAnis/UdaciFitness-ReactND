@@ -58,7 +58,7 @@ export function isBetween (num, x, y) {
               <MaterialIcons
                 name='directions-run'
                 color={'black'}
-                size='35'
+                size={35}
               />
             </View>
           )
@@ -76,7 +76,7 @@ export function isBetween (num, x, y) {
               <MaterialCommunityIcons
                 name='bike'
                 color={'black'}
-                size='35'
+                size={35}
               />
             </View>
           )
@@ -92,9 +92,9 @@ export function isBetween (num, x, y) {
           return (
             <View>
               <MaterialCommunityIcons
-                name='directions-run'
+                name='swim'
                 color={'black'}
-                size='35'
+                size={35}
               />
             </View>
           )
@@ -112,7 +112,7 @@ export function isBetween (num, x, y) {
               <FontAwesome
                 name='bed'
                 color={'black'}
-                size='35'
+                size={35}
               />
             </View>
           )
@@ -130,14 +130,14 @@ export function isBetween (num, x, y) {
               <MaterialCommunityIcons
                 name='food'
                 color={'black'}
-                size='35'
+                size={35}
               />
             </View>
           )
         }
       }
     }
-    return type; metric === 'undefined'
+    return typeof metric === 'undefined'
     ? info
     : info[metric]
   }
