@@ -4,6 +4,7 @@ import AddEntry from './components/AddEntry';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './reducers'
+import History from './components/History';
 // import { YellowBox } from 'react-native';
 // YellowBox.ignoreWarnings(['Remote debugger']);
 
@@ -17,7 +18,9 @@ export default class App extends React.Component {
   return (
     <Provider store={createStore(reducer)}>
       <View style={{flex:1}}>
-          <AddEntry />
+        <View style={{height:20}} />
+          {/* <AddEntry /> */}
+          <History />
       </View>
     </Provider>
   );
