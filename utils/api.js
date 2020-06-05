@@ -19,4 +19,5 @@ export function removeEntry (key) {
         delete data[key]
         AsyncStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(data))
     })
+    .catch(err=>console.log(err))
 } 
