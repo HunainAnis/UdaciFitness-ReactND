@@ -8,9 +8,11 @@ import reducer from './reducers'
 import History from './components/History';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Constants } from 'react-native-unimodules';
-import { purple } from './utils/colors';
+import { purple, gray } from './utils/colors';
 import { AntDesign } from '@expo/vector-icons';
+import EntryDetail from './components/EntryDetail';
 // import { YellowBox } from 'react-native';
 // YellowBox.ignoreWarnings(['Remote debugger']);
 
@@ -24,18 +26,10 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducer)}>
-      {/* <View style={{flex:1}}>
-        <View style={{height:20}} />
-        <NavigationContainer>
-          <MyTabs />
-        </NavigationContainer> */}
-          {/* <AddEntry /> */}
-          {/* <History /> */}
-      {/* </View> */}
       <UdaciStatusBar backgroundColor={purple} barStyle='light-content' />
       <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
+        <MyStack />
+      </NavigationContainer>
     </Provider>
   );
 }
@@ -64,13 +58,29 @@ function MyTabs() {
       }  
     })}
     tabBarOptions={{
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray',
+      activeTintColor: purple,
+      inactiveTintColor: gray,
     }}
     >
-      <Tab.Screen  name="History" component={History} />
+      <Tab.Screen name="History" component={History} />
       <Tab.Screen name="Add Data" component={AddEntry} />
     </Tab.Navigator>
+  );
+}
+
+const Stack = createStackNavigator();
+console.log(Stack.screen)
+function MyStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="History" component={MyTabs} />
+      <Stack.Screen
+        name="Entry Detail"
+        component={EntryDetail}
+        options={({ route }) => ({ title: route.params.entryId })}
+      />
+      {/* <Stack.Screen name='`${safd}`' component={EntryDetail} /> */}
+    </Stack.Navigator>
   );
 }
 
