@@ -14,6 +14,7 @@ import { purple, gray } from './utils/colors';
 import { AntDesign } from '@expo/vector-icons';
 import EntryDetail from './components/EntryDetail';
 import Live from './components/Live';
+import { setLocalNotification } from './utils/helpers';
 // import { YellowBox } from 'react-native';
 // YellowBox.ignoreWarnings(['Remote debugger']);
 
@@ -24,6 +25,10 @@ const instructions = Platform.select({
 
 export default class App extends React.Component {
   
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={createStore(reducer)}>
