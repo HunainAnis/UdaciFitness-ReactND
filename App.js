@@ -10,6 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Constants } from 'react-native-unimodules';
 import { purple } from './utils/colors';
+import { AntDesign } from '@expo/vector-icons';
 // import { YellowBox } from 'react-native';
 // YellowBox.ignoreWarnings(['Remote debugger']);
 
@@ -51,8 +52,23 @@ function UdaciStatusBar ({ backgroundColor, ...props }) {
 function MyTabs() {
   const Tab = createBottomTabNavigator();
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="History" component={History} />
+    <Tab.Navigator screenOptions={({route})=>({
+      tabBarIcon:({ focused, color, size }) => {
+        let iconName;
+        if(route.name === 'History') {
+          iconName = 'book'
+        } else if(route.name === 'Add Data') {
+          iconName= 'addfile'
+        }
+        return <AntDesign name={iconName} size={size} color={color} />
+      }  
+    })}
+    tabBarOptions={{
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    }}
+    >
+      <Tab.Screen  name="History" component={History} />
       <Tab.Screen name="Add Data" component={AddEntry} />
     </Tab.Navigator>
   );
