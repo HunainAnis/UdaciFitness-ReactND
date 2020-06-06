@@ -13,6 +13,7 @@ import { Constants } from 'react-native-unimodules';
 import { purple, gray } from './utils/colors';
 import { AntDesign } from '@expo/vector-icons';
 import EntryDetail from './components/EntryDetail';
+import Live from './components/Live';
 // import { YellowBox } from 'react-native';
 // YellowBox.ignoreWarnings(['Remote debugger']);
 
@@ -53,6 +54,8 @@ function MyTabs() {
           iconName = 'book'
         } else if(route.name === 'Add Data') {
           iconName= 'addfile'
+        } else if(route.name === 'Live') {
+          iconName= 'enviromento'
         }
         return <AntDesign name={iconName} size={size} color={color} />
       }  
@@ -64,6 +67,7 @@ function MyTabs() {
     >
       <Tab.Screen name="History" component={History} />
       <Tab.Screen name="Add Data" component={AddEntry} />
+      <Tab.Screen name="Live" component={Live} />
     </Tab.Navigator>
   );
 }
@@ -73,7 +77,9 @@ console.log(Stack.screen)
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="History" component={MyTabs} />
+      <Stack.Screen
+        // options={({ route })=> ({ title: route.params.name })}
+        name='s' component={MyTabs} />
       <Stack.Screen
         name="Entry Detail"
         component={EntryDetail}
